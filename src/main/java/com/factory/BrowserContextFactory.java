@@ -7,6 +7,7 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
 
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -29,6 +30,12 @@ public final class BrowserContextFactory {
 
   public static BrowserContext getBrowserContext(Playwright playwright) {
     return BROWSER_MAP.get(BROWSER).apply(playwright).get().newContext();
+  }
+
+  public static BrowserContext getExistingBrowserContext(Playwright playwright) {
+    return BROWSER_MAP.get(BROWSER).apply(playwright)
+        .get()
+        .newContext(new Browser.NewContextOptions().setStorageStatePath(Paths.get("reusable-login-state.json")));
   }
 
   private static BrowserType.LaunchOptions getLaunchOptions() {

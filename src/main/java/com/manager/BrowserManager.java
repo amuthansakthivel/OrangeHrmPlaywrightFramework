@@ -15,6 +15,12 @@ public final class BrowserManager {
     PlaywrightManager.setBrowserContext(browserContext);
   }
 
+  public static void initBrowserWithExistingLoginState() {
+    Playwright playwright = PlaywrightManager.getPlaywrightInstance();
+    BrowserContext browserContext = BrowserContextFactory.getExistingBrowserContext(playwright);
+    PlaywrightManager.setBrowserContext(browserContext);
+  }
+
   public static void tearDown() {
     PlaywrightManager.cleanUp();
   }

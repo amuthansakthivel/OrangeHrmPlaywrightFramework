@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 @Execution(value = ExecutionMode.CONCURRENT)
 class EmployeeInformationPageTest extends TestSetup {
 
@@ -21,7 +18,7 @@ class EmployeeInformationPageTest extends TestSetup {
   @Test
   void testWhetherEmployeeInformationIsDisplayed() {
     LoginPage.getInstance()
-        .login(loginDetails)
+        .loginToApplication(loginDetails)
         .clickPIMMenu()
         .verifyEmployeeInformationTextIsDisplayed();
   }
@@ -29,7 +26,7 @@ class EmployeeInformationPageTest extends TestSetup {
   @Test
   void testNewEmployeeCanBeCreated() {
     LoginPage.getInstance()
-        .login(loginDetails)
+        .loginToApplication(loginDetails)
         .clickPIMMenu()
         .navigateToAddEmployeePage()
         .addNewEmployee(employeeDetails)

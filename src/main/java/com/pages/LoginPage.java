@@ -20,7 +20,7 @@ public class LoginPage {
     return new LoginPage(PlaywrightManager.getPage());
   }
 
-  public HomePage login(LoginDetails loginDetails) {
+  public HomePage loginToApplication(LoginDetails loginDetails) {
     page.locator(USERNAME).fill(loginDetails.getUserName());
     page.locator(PASSWORD).fill(loginDetails.getPassword());
     page.locator(LOGIN_BUTTON).click();
